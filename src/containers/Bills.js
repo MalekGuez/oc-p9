@@ -23,7 +23,12 @@ export default class {
   handleClickIconEye = (icon) => {
     const billUrl = icon.getAttribute("data-bill-url")
     const imgWidth = Math.floor($('#modaleFile').width() * 0.5)
-    $('#modaleFile').find(".modal-body").html(`<div style='text-align: center;' class="bill-proof-container"><img width=${imgWidth} src=${billUrl} alt="Bill" /></div>`)
+
+    if(billUrl.split('/').pop() != 'null') {
+      $('#modaleFile').find(".modal-body").html(`<div style='text-align: center;' class="bill-proof-container"><img width=${imgWidth} src=${billUrl} alt="Bill" /></div>`);
+    } else {
+      $('#modaleFile').find(".modal-body").html(`<div style='text-align: center;' class="bill-proof-container"><span>Pas de justificatif</span></div>`);
+    }
     $('#modaleFile').modal('show')
   }
 
